@@ -1,0 +1,58 @@
+<!--index.wxml-->
+<view class="container">
+	<view class="black-container"></view>
+	<view class="black-padding"></view>
+	<view class="white-container">
+		<view class="userinfo">
+			<view class="userinfo-avatar-wrapper">
+				<view class="userinfo-avatar">
+					<open-data type="userAvatarUrl"></open-data>
+				</view>
+			</view>
+
+			<view class="name">
+				<text >Hello，</text>
+				<open-data type="userNickName"></open-data>
+			</view>
+
+		</view>
+		<view class="enter-button-group">
+			<l-button
+			 width="540"
+			 height="120"
+			 bg-color="#f4f5f5"
+			 shape="semicircle"
+			 l-class="enter-button"
+			 open-type="getUserInfo"
+			 data-gametype="1"
+			 bind:getuserinfo="getUserInfo"
+			>
+				<i class="iconfont icon-langrensha"></i>
+				前往狼人杀房间界面
+			</l-button>
+			<l-button
+			 width="540"
+			 height="120"
+			 bg-color="#f4f5f5"
+			 shape="semicircle"
+			 l-class="enter-button"
+			 data-gametype="2"
+			 open-type="getUserInfo"
+			 bind:getuserinfo="getUserInfo"
+			>
+				<i class="iconfont icon-duikang"></i>
+				前往阿瓦隆房间界面
+			</l-button>
+		</view>
+	</view>
+
+</view>
+<ModalInput
+ inputLabel="房间号"
+ inputPlaceHolder="创建房间后可获得"
+ isShowModalInput="{{isShowModalInput}}"
+ title="请输入房间号"
+ bind:onConfirm="onModalInputConfirm"
+>
+</ModalInput>
+

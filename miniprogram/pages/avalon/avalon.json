@@ -1,0 +1,20 @@
+{
+  "usingComponents": {
+    "l-card": "../../miniprogram_npm/lin-ui/card",
+    "l-collapse": "../../miniprogram_npm//lin-ui//collapse",
+    "l-collapse-item": "../../miniprogram_npm//lin-ui//collapse-item",
+    "l-icon": "../../miniprogram_npm//lin-ui/icon",
+    "l-button": "../../miniprogram_npm/lin-ui/button",
+    "l-transition": "../../miniprogram_npm/lin-ui/transition",
+    "WereWolfHeadItem": "../../components/WereWolfHeadItem/WereWolfHeadItem",
+    "WereWolfBodyItem": "../../components/WerewolfBodyItem/WereWolfBodyItem",
+    "WerewolfFooterItem": "../../components/WerewolfFooterItem/WerewolfFooterItem",
+    "RolesModal": "../../components/RolesModal/RolesModal"
+  },
+  "navigationBarBackgroundColor": "#ffffff",
+  "navigationBarTextStyle": "black",
+  "navigationBarTitleText": "阿瓦隆角色配置",
+  "backgroundColor": "#eeeeee",
+  "backgroundTextStyle": "light",
+  "enablePullDownRefresh": false
+}

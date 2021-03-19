@@ -1,0 +1,40 @@
+.werewolf-head-item-container {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20rpx;
+}
+
+.item-name {
+  position: absolute;
+  left: 60rpx;
+  font-size: 40rpx;
+}
+
+.counter {
+  margin-left: 160rpx;
+}
+
+.l-disabled-class {
+  visibility: hidden;
+}
+
+.l-symbol-class {
+  background-color: transparent;
+  font-size: 20rpx;
+}
+
+.l-count-class {
+  background-color: transparent;
+  font-size: 40rpx;
+  font-weight: 600;
+  color: black;
+}
+
+.item-quantifier {
+  position: absolute;
+  right: 60rpx;
+  font-size: 40rpx;
+}

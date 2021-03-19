@@ -1,0 +1,97 @@
+<view class="werewolf-container">
+	<!-- 页面头部 -->
+	<view class="werewolf-head">
+		{{roomNumber!==-1?roomNumber+' 号':''}}房间
+	</view>
+	<view class="werewolf-body">
+
+		<l-card type="primary" plaintext="{{true}}" l-class="l-card">
+			<!-- 卡片头部 -->
+			<WereWolfHeadItem
+			 itemId="1"
+			 itemName="总人数"
+			 itemQuantifier="人"
+			 bind:onTapCount="onCountChange"
+			 count="{{memberNum}}"
+			 min="{{6}}"
+			 max="{{18}}"
+			/>
+			<WereWolfHeadItem
+			 itemId="2"
+			 itemName="普通狼人数"
+			 itemQuantifier="匹"
+			 bind:onTapCount="onCountChange"
+			 count="{{normalWolfNum}}"
+			 min="{{0}}"
+			 max="{{6}}"
+			/>
+			<view class="divider"></view>
+
+			<!-- 卡片身体 -->
+			<l-collapse>
+				<l-collapse-item customTitle="{{true}}" wx:for="{{specialCharacter}}" wx:key="id">
+					<!--自定义标题-->
+					<view class="title" slot="title">
+						<WereWolfBodyItem
+						 itemId="{{item.id}}"
+						 iconType="{{item.iconType}}"
+						 itemName="{{item.itemName}}"
+						 isSelected="{{item.isSelected}}"
+						 bind:onSelectChange="onSelectChange"
+						/>
+					</view>
+					<text>{{item.roleInfo===''?'这是一个自定义添加的人物。':item.roleInfo}}</text>
+				</l-collapse-item>
+			</l-collapse>
+
+			<!-- 卡片底部 -->
+			<WerewolfFooterItem wx:if="{{isCreateRoom!=='1'}}" role="{{myRole}}" />
+			<view wx:else class="footer-start">
+				<view class="divider"></view>
+				<view class="edit">
+					<view bind:tap="onTapAddRole">
+						<i class="iconfont icon-newAdd-copy"></i>
+						添加自定义角色
+					</view>
+					<view bind:tap="onUseRecommendation">
+						<i class="iconfont icon-tuijian"></i>
+						使用推荐配置
+					</view>
+				</view>
+				<view class="start">
+					<l-button
+					 width="540"
+					 bg-color="white"
+					 shape="circle"
+					 l-label-class="start-button"
+					 l-class="start-button"
+					 bind:lintap="onStartGame"
+					>
+						<i class="iconfont icon-kaishi"></i>
+						开始游戏
+					</l-button>
+				</view>
+			</view>
+		</l-card>
+	</view>
+
+</view>
+
+<ModalInput
+ inputLabel="角色名"
+ inputPlaceHolder="例如：小女孩"
+ isShowModalInput="{{isShowModalInput}}"
+ title="请输入自定义角色名"
+ bind:onConfirm="onModalInputConfirm"
+>
+</ModalInput>
+
+<RolesModal
+ memberNum="{{memberNum}}"
+ normalWolfNum="{{normalWolfNum}}"
+ roles="{{specialCharacter}}"
+ isShowRolesModal="{{isShowRolesModal}}"
+ gameType="1"
+ bind:onRolesModalConfirm="onRolesModalConfirm"
+></RolesModal>
+

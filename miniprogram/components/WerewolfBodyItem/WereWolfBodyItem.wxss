@@ -1,0 +1,35 @@
+.werewolf-body-item-container {
+  display: flex;
+  flex-direction: row;
+  height: 70rpx;
+  line-height: 70rpx;
+}
+
+.iconfont-container {
+  margin-right: 30rpx;
+}
+
+.iconfont {
+  font-size: 50rpx;
+}
+
+.item-name {
+  font-size: 40rpx;
+  max-width: 350rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.radio {
+  /* width: 100rpx; */
+  width: 150rpx;
+  position: absolute;
+  right: 50rpx;
+  /* background-color: pink; */
+}
+
+.down {
+  position: absolute;
+  right: 0;
+}

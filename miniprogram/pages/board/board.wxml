@@ -1,0 +1,49 @@
+<view class="board-container">
+	<view class="board-head">
+		{{roomNumber!==-1?roomNumber+' 号':''}}房间
+	</view>
+	<view class="board-body">
+		<!-- slot和 key两者值必须相等 -->
+
+		<view class="board-body-body">
+			<l-card type="primary" plaintext="{{true}}" l-class="l-card">
+				<!-- 卡片头部 -->
+				<view class="board-body-header">
+					<l-grid row-num="1">
+						<l-grid-item key="one" slot="one">
+							<view class="text">房间人数</view>
+							<view class="num">{{roomMemberNow.length}} / {{shouldRoomMember}}</view>
+						</l-grid-item>
+					</l-grid>
+				</view>
+				<!-- 成员信息 -->
+				<view class="board-body-body">
+					<l-grid show-border="true" row-num="2" l-class="l-grid">
+						<l-grid-item
+						 key="{{item.id}}"
+						 slot="{{item.id}}"
+						 wx:for="{{roomMemberNow}}"
+						 wx:key="id"
+						>
+							<UserItem userAvatarUrl="{{item.userAvatarUrl}}" userNickName="{{item.userNickName}}" userRole="{{item.userRole}}"></UserItem>
+						</l-grid-item>
+					</l-grid>
+				</view>
+				<!-- 底部加载 -->
+				<view class="loading" wx:if="{{roomMemberNow.length!==shouldRoomMember}}">
+					<l-loading type="circle" color="#666" show="{{true}}"></l-loading>
+					<text class="loading-text">正在等待玩家加入...</text>
+				</view>
+
+			</l-card>
+		</view>
+
+	</view>
+	<view class="help" bind:tap="onClickHelp">
+		<i class="iconfont icon-guanyu1" style="font-size:90rpx;opacity:0.65"></i>
+	</view>
+	<view class="action-sheet">
+		<l-action-sheet></l-action-sheet>
+	</view>
+</view>
+

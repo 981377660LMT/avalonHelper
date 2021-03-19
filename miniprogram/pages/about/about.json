@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "l-button": "../../miniprogram_npm/lin-ui/button"
+  },
+
+  "navigationBarBackgroundColor": "#f4f5f5",
+  "navigationBarTextStyle": "black",
+  "backgroundTextStyle": "light",
+  "enablePullDownRefresh": false
+}

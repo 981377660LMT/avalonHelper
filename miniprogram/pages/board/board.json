@@ -1,0 +1,17 @@
+{
+  "usingComponents": {
+    "l-card": "../../miniprogram_npm/lin-ui/card",
+    "l-action-sheet": "../../miniprogram_npm//lin-ui/action-sheet",
+    "l-grid": "../../miniprogram_npm/lin-ui/grid",
+    "l-grid-item": "../../miniprogram_npm/lin-ui/grid-item",
+    "l-loading": "../../miniprogram_npm/lin-ui/loading",
+    "l-transition": "../../miniprogram_npm/lin-ui/transition",
+    "UserItem": "../../components/UserItem/UserItem"
+  },
+  "navigationBarBackgroundColor": "#ffffff",
+  "navigationBarTextStyle": "black",
+  "navigationBarTitleText": "玩家角色分配(仅法官可见)",
+  "backgroundColor": "#eeeeee",
+  "backgroundTextStyle": "light",
+  "enablePullDownRefresh": false
+}

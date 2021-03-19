@@ -1,0 +1,97 @@
+.user-item {
+  position: relative;
+  width: 250rpx;
+  height: 280rpx;
+  transform: perspective(1000rpx);
+  -webkit-transform: perspective(1000rpx);
+  -moz-transform: perspective(1000rpx);
+  -ms-transform: perspective(1000rpx);
+  -o-transform: perspective(1000rpx);
+}
+
+.user-item-back,
+.user-item-front {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transition: transform 0.35s ease-in-out;
+  -webkit-transition: transform 0.35s ease-in-out;
+  -moz-transition: transform 0.35s ease-in-out;
+  -ms-transition: transform 0.35s ease-in-out;
+  -o-transition: transform 0.35s ease-in-out;
+}
+
+.front-rotate {
+  transform: rotateY(180deg) !important;
+  -webkit-transform: rotateY(180deg) !important;
+  -moz-transform: rotateY(180deg) !important;
+  -ms-transform: rotateY(180deg) !important;
+  -o-transform: rotateY(180deg) !important;
+}
+
+.user-item-front {
+  transform: rotateY(0deg);
+  -webkit-transform: rotateY(0deg);
+  -moz-transform: rotateY(0deg);
+  -ms-transform: rotateY(0deg);
+  -o-transform: rotateY(0deg);
+}
+
+.back-rotate {
+  transform: rotateY(0deg) !important;
+  -webkit-transform: rotateY(0deg) !important;
+  -moz-transform: rotateY(0deg) !important;
+  -ms-transform: rotateY(0deg) !important;
+  -o-transform: rotateY(0deg) !important;
+}
+
+.user-item-back {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: rotateY(-180deg);
+  -webkit-transform: rotateY(-180deg);
+  -moz-transform: rotateY(-180deg);
+  -ms-transform: rotateY(-180deg);
+  -o-transform: rotateY(-180deg);
+}
+
+.avatar {
+  overflow: hidden;
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08), 0 2px 2px rgba(0, 0, 0, 0.12), 0 4px 4px rgba(0, 0, 0, 0.16),
+    0 8px 8px rgba(0, 0, 0, 0.2);
+}
+
+.info {
+  max-width: 250rpx;
+}
+
+.info .text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin: 10rpx;
+  font-size: 24rpx;
+}
+
+.role {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 40rpx;
+  margin-top: 20rpx;
+  /* font-weight: bold; */
+}
+
+.tip {
+  font-size: 40rpx;
+}

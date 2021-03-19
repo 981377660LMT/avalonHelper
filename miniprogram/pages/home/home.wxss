@@ -1,0 +1,103 @@
+/**index.wxss**/
+
+.black-container {
+  width: 100%;
+  height: 300rpx;
+  /* background-color: black; */
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASsAAACoCAMAAACPKThEAAAAqFBMVEUAAAD///8AAgAGCgkEBgUBAAH//v/8/PwFCQkEBAUTFhcUFRcPEBIMDg0nMjEpMDAoLC0QFBMlJynKy8svNTUaICAXGxzs7u4UFBcMDA4NEhAoKiwTGBgaHB4hLCslKymfoaDo6uodJSMYHhwAEhIfIyEOHBs2ODeZm5qws7O8v7/Gx8errayEiopmbG1OVVY+SEfc3dteY2N7fn1kZWQ/QUDS1tcyNTiSHQ7KAAAEDUlEQVR4nO3Zb3eiOhAGcBRUQDAECCiiQVjW9U/V1up+/292J+i97brSdrd1e3Wfnz21L8wcM2cyCammAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAfJjmDy4S9aOCfjLLMHX1Uj+6aRhWpfWOiK1WiyIYlSquqVdRP+wrf5KmoeuuYyvdfr/fdciAmGqiTe2XC6Kpkq0CqEBOV+nTi7uurl95tlqG7ib2yCfD4VC9+UKIKEo5T9T0KF+/kC5KvKknSde2R6OREFW4Q9y8SBNXNy43kT/AOnz9L1/zfDwe95SQMCZlKYpUlYNB1fCWFUmrTk94WhSllIypKFU4CjvOv345fOSCM7k4+vLTb7P5PAj2+yBYzGezZXa3Wu8oWTRbNvZFZLvUxF4rLupPpu5yW/ge64W9cS/crFd32XI2my8OsefzWTb9M5O6GMPV1kHjVHwfLLcPU0oYy0XXoaWovZSupmXpDhdSfTx82C6D+/gkYKcRrDXjutcg5YqnzVXnaU7PfsdBtvHC0BNUW6rR16Fm7qTCC5ncZPv4OLhTvbfbx7grjV97v9Kot6dlLlRptX+og6NJtpY9GXG9NldN6ui8kKFcLyen9dk+BlrIskzda6+rpuEmaRnm287pPP/L2WIjvYLXFgWlKimk3C3OBlAhOlvJ8jShdL/n1Pb5qqroCjad1s+1kYkycmuLwqDKLLNOoy7b891UUlVVG+qVo2wNbCGnbBvXTLfR2KcRr12ERiLKoGZouxFv2VQKfvUL8EitojSnQ8JS9eTzydLqF6HLmz/vpP8uvxkdPYTtXPmR/Tl6bONFHnp0fGifnfQjfylXyeOZklSBgjX1/MgZ3FCqNLUfJt0RbfvbyZlU3e9Uv6rLlekW5e7+zLAJLT8mUsd836P4/486JEWlN823NO1Ou/105Iq/2bSMBmfn22q1NEvngkVPzb1Ng+nP/Z2go2mRuC+czK6VZVmOI3wW9h7mcXUyqs6Tndmmx3zVcc7WBuVKbYQ5Y5usUx1Bq44Xzx7pEO9H6gB6M7dXz1jqMoWP/OF3z3/MFpM4nuyXK+HRYw53KVW1ubLo8C8kFdFquVejgmxFT4SUKWcwsG4xUwqtJ8vlRfVg5/lSynzMKFOpa77Sm9VGKkoWSk8yOVaJkiKlmrqBC74XWIbpujwSpe953tD3RyP79W2spTZSerCMhBrlef6o23fUHetttfSf0NGUnhFdbqepndrqkvRNxVGNcvjhglXdrFrUp678meZtLMskummqm/fzjercKDVG19XQm157p37j/y+t3xkEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADw1/sHYgxLK4k1d7UAAAAASUVORK5CYII=);
+  background-position: 0rpx -100rpx;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-color: black;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.12), 0 4px 4px rgba(0, 0, 0, 0.12),
+    0 8px 8px rgba(0, 0, 0, 0.12), 0 16px 16px rgba(0, 0, 0, 0.12);
+  z-index: -1;
+}
+
+.black-padding {
+  width: 100%;
+  height: 100rpx;
+  position: absolute;
+  background-color: black;
+  z-index: -1;
+}
+
+.white-container {
+  width: 100%;
+  height: 100%;
+  border-top-left-radius: 16rpx 16rpx;
+  border-top-right-radius: 16rpx 16rpx;
+  background-color: #f4f5f5;
+  z-index: 999;
+}
+
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: black;
+  font-size: 54rpx;
+}
+
+.userinfo-avatar-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 220rpx;
+  height: 220rpx;
+  background-color: #f4f5f5;
+  margin-top: -110rpx;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+
+.userinfo-avatar {
+  overflow: hidden;
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.12), 0 4px 4px rgba(0, 0, 0, 0.12),
+    0 8px 8px rgba(0, 0, 0, 0.12), 0 16px 16px rgba(0, 0, 0, 0.12);
+}
+
+.name {
+  width: 90%;
+  text-align: center;
+  margin-top: 20rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.enter-button-group {
+  position: absolute;
+  top: 74%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+}
+
+.enter-button {
+  font-size: 50rpx !important;
+  color: black !important;
+  margin-bottom: 120rpx;
+  padding: 40rpx !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.07), 0 4px 8px rgba(0, 0, 0, 0.07),
+    0 8px 16px rgba(0, 0, 0, 0.07), 0 16px 32px rgba(0, 0, 0, 0.07), 0 32px 64px rgba(0, 0, 0, 0.07);
+}
+
+.iconfont {
+  color: black;
+  font-size: 70rpx;
+  margin-right: 30rpx;
+}

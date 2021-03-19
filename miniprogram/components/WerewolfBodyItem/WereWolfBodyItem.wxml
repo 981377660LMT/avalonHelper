@@ -1,0 +1,15 @@
+<view class="werewolf-body-item-container">
+	<view class="iconfont-container">
+		<i class="iconfont {{iconType}}"></i>
+	</view>
+	<text class="item-name">{{itemName}}</text>
+	<view class="radio">
+		<l-radio-group bind:linchange="linchange" current="{{isSelected}}" data-itemid="{{itemId}}">
+			<l-radio key="1" placement="right" select-color="gray"></l-radio>
+		</l-radio-group>
+	</view>
+	<view class="down">
+		<l-icon name="down" size="24" color="#666" />
+	</view>
+</view>
+

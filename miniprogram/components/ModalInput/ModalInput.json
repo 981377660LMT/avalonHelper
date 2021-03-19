@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "l-modal":"../../miniprogram_npm/lin-ui/dialog",
+    "l-input":"../../miniprogram_npm/lin-ui/input"
+  }
+}

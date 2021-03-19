@@ -1,0 +1,54 @@
+{
+  "setting": {},
+  "condition": {
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "id": -1,
+          "name": "db guide",
+          "pathName": "pages/databaseGuide/databaseGuide",
+          "query": ""
+        },
+        {
+          "name": "pages/werewolf/werewolf",
+          "pathName": "pages/werewolf/werewolf",
+          "query": "gameType=1",
+          "scene": null
+        },
+        {
+          "name": "pages/avalon/avalon",
+          "pathName": "pages/avalon/avalon",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/home/home",
+          "pathName": "pages/home/home",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/about/about",
+          "pathName": "pages/about/about",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/board/board",
+          "pathName": "pages/board/board",
+          "query": "",
+          "scene": null
+        }
+      ]
+    }
+  }
+}

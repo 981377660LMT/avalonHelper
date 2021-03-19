@@ -1,0 +1,8 @@
+{
+  "component": true,
+  "usingComponents": {
+    "l-icon": "../../miniprogram_npm/lin-ui/icon",
+    "l-radio-group": "../../miniprogram_npm/lin-ui/radio-group",
+    "l-radio": "../../miniprogram_npm/lin-ui/radio"
+  }
+}

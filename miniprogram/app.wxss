@@ -1,0 +1,9 @@
+@import 'icon.wxss';
+
+page {
+  padding: 0;
+  margin: 0;
+  background-color: #f4f5f5;
+  box-sizing: border-box;
+  font-size: 28rpx;
+}

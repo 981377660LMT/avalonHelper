@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "l-button": "../../miniprogram_npm/lin-ui/button",
+    "ModalInput":"../../components/ModalInput/ModalInput"
+  },
+  "navigationBarTextStyle": "white",
+  "navigationBarTitleText": "狼人杀-阿瓦隆发牌小助手",
+  "backgroundTextStyle": "light",
+  "enablePullDownRefresh": false
+}

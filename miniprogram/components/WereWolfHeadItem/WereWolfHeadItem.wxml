@@ -1,0 +1,19 @@
+<view class="werewolf-head-item-container">
+
+	<text class="item-name">{{itemName}}</text>
+	<view class="counter">
+		<l-counter
+		 count="{{count}}"
+		 min="{{min}}"
+		 max="{{max}}"
+		 data-itemid="{{itemId}}"
+		 bind:lintap="lintap"
+		 l-disabled-class="l-disabled-class"
+		 l-symbol-class="l-symbol-class"
+		 l-count-class="l-count-class"
+		/>
+	</view>
+	<text class="item-quantifier">{{itemQuantifier}}</text>
+
+</view>
+

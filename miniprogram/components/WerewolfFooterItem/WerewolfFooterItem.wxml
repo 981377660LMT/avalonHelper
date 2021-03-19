@@ -1,0 +1,14 @@
+<view class="footer-container">
+	<view class="footer-head">
+		<view class="divider"></view>
+		<text class="center-text">您的角色</text>
+		<view class="divider"></view>
+	</view>
+	<view class="footer-body">
+		<view class="footer-avatar">
+			<open-data type="userAvatarUrl" class="footer-avatar"></open-data>
+		</view>
+		<text class="footer-role">{{role}}</text>
+	</view>
+</view>
+

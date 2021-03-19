@@ -1,0 +1,15 @@
+<view class="user-item " bind:tap="toggleRotate">
+	<view class="user-item-front {{isRotate?'front-rotate':''}}">
+		<view>
+			<image class="avatar " mode="aspectFill" src="{{userAvatarUrl}}" />
+		</view>
+		<view class="info">
+			<view class="text">{{userNickName}}</view>
+			<view class="role">{{userRole}}</view>
+		</view>
+	</view>
+	<view class="user-item-back {{isRotate?'back-rotate':''}}">
+		<view class="tip">该角色已出局</view>
+	</view>
+</view>
+

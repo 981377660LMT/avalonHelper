@@ -1,0 +1,27 @@
+<view class="modal-input">
+	<l-modal
+	 title="请确认您的选择"
+	 show="{{isShowRolesModal}}"
+	 type="confirm"
+	 confirm-color="black"
+	 l-class="l-modal"
+   l-content-class="content"
+	 bind:linconfirm="confirm"
+	>
+		<view class="roles">
+			<view class="normalMan">
+				{{gameType==='1'?'普通村民':'忠臣'}} x {{memberNum-normalWolfNum-specialCharaterNum}}
+			</view>
+			<view class="normalWolf" wx:if="{{gameType==='1'}}">
+				普通狼人 x {{normalWolfNum}}
+			</view>
+			<block wx:for="{{roles}}" wx:key="id">
+				<view class="role" wx:if="{{item.isSelected===1}}">
+					{{item.itemName}} x 1
+				</view>
+			</block>
+		</view>
+
+	</l-modal>
+</view>
+

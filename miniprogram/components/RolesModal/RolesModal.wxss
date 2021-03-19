@@ -1,0 +1,9 @@
+.l-modal {
+  font-size: 60rpx !important;
+}
+
+.content {
+  font-size: 32rpx !important;
+  line-height: 1.4em !important;
+  color: black !important;
+}

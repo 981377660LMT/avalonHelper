@@ -1,0 +1,49 @@
+<!--index.wxml-->
+<view class="container">
+
+	<view class="userinfo">
+		<view class="userinfo-avatar">
+			<open-data type="userAvatarUrl"></open-data>
+		</view>
+		<view class="name">
+			<text >Hello，</text>
+			<open-data type="userNickName"></open-data>
+		</view>
+	</view>
+
+	<view class="enter-button-group">
+		<l-button
+		 width="500"
+		 height="120"
+		 bg-color="#f4f5f5"
+		 shape="semicircle"
+		 l-class="enter-button"
+		>
+			<i class="iconfont icon-guanyu1"></i>
+			建议反馈
+		</l-button>
+		<l-button
+		 width="500"
+		 height="120"
+		 bg-color="#f4f5f5"
+		 shape="semicircle"
+		 l-class="enter-button"
+		>
+			<i class="iconfont icon-duihua"></i>
+			法官台词
+		</l-button>
+		<l-button
+		 width="500"
+		 height="120"
+		 bg-color="#f4f5f5"
+		 shape="semicircle"
+		 l-class="enter-button"
+		>
+			<i class="iconfont icon-gonglve"></i>
+			游戏攻略
+		</l-button>
+
+	</view>
+
+</view>
+

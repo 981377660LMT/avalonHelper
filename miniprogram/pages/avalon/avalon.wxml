@@ -1,0 +1,67 @@
+<view class="werewolf-container">
+	<!-- 页面头部 -->
+	<view class="werewolf-head">
+		{{roomNumber!==-1?roomNumber+' 号':''}}房间
+	</view>
+	<view class="werewolf-body">
+
+		<l-card type="primary" plaintext="{{true}}" l-class="l-card">
+			<!-- 卡片头部 -->
+			<WereWolfHeadItem
+			 itemId="1"
+			 itemName="总人数"
+			 itemQuantifier="人"
+			 bind:onCountChange="onCountChange"
+			 count="{{memberNum}}"
+			 min="5"
+			 max="10"
+			/>
+
+			<view class="divider"></view>
+
+			<!-- 卡片身体 -->
+			<l-collapse>
+				<l-collapse-item customTitle="{{true}}" wx:for="{{specialCharacter}}" wx:key="id">
+					<!--自定义标题-->
+					<view class="title" slot="title">
+						<WereWolfBodyItem
+						 itemId="{{item.id}}"
+						 iconType="{{item.iconType}}"
+						 itemName="{{item.itemName}}"
+						 isSelected="{{item.isSelected}}"
+						 bind:onSelectChange="onSelectChange"
+						/>
+					</view>
+					<text>{{item.roleInfo===''?'这是一个自定义添加的人物。':item.roleInfo}}</text>
+				</l-collapse-item>
+			</l-collapse>
+
+			<!-- 卡片底部 -->
+			<WerewolfFooterItem wx:if="{{isSelectRole}}" role="预言家" />
+			<view class="footer-start" wx:else>
+				<view class="divider"></view>
+				<view class="edit">
+					<view>
+						<i class="iconfont icon-tuijian"></i>
+						使用推荐配置
+					</view>
+				</view>
+				<view class="start">
+					<l-button
+					 width="540"
+					 bg-color="white"
+					 shape="circle"
+					 l-label-class="start-button"
+					 l-class="start-button"
+					>
+						<i class="iconfont icon-kaishi"></i>
+						开始游戏
+					</l-button>
+
+				</view>
+			</view>
+		</l-card>
+	</view>
+
+</view>
+

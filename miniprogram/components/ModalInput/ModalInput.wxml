@@ -1,0 +1,23 @@
+<view class="modal-input">
+	<l-modal
+	 title="{{title}}"
+	 show="{{isShowModalInput}}"
+	 type="confirm"
+	 confirm-color="black"
+	 l-class="l-modal"
+	 bind:linconfirm="confirm"
+	>
+		<l-input
+		 label="{{inputLabel}}"
+		 placeholder="{{inputPlaceHolder}}"
+		 focus="{{true}}"
+		 clear="{{true}}"
+		 showRow="{{false}}"
+		 required="{{true}}"
+		 bind:lininput="inputChange"
+		 bind:linblur="inputChange"
+		 bind:linclear="clear"
+		/>
+	</l-modal>
+</view>
+
