@@ -47,3 +47,55 @@
 	</view>
 </view>
 
+<l-arc-popup
+ show="{{isShowTips}}"
+ direction="top"
+ opacity="0.1"
+ arc-radius="30"
+ max-height="800"
+>
+	<view class="popup-title">
+		<text class="iconfont icon-icon-test popup-title"></text>
+		法官台词 / 任务条件
+	</view>
+	<l-segment placement="bottom" bind:linchange="changeTabs">
+		<l-segment-item tab="狼人杀" key="1" />
+		<l-segment-item tab="阿瓦隆" key="2" />
+	</l-segment>
+	<view class="popup-body">
+		<view class="werewolf" hidden="{{!isShowWereWolf}}">
+			<text class="big-block"># 最基本的台词</text>
+
+			<text class="block">天黑请闭眼。</text>
+			<text class="block">指挥狼人：狼人请睁眼。（第一次要加上去：狼人请相互确认身份）</text>
+			<text class="block">狼人请指定被害者。（狼人请统一意见）</text>
+			<text class="block">狼人请闭眼。</text>
+			<text class="block">天黑请闭眼。</text>
+			<text class="block">指挥女巫：女巫请睁眼。</text>
+			<text class="block">女巫，你有一瓶毒药与一瓶解药，今天晚上他(她)死了，你要救他吗？</text>
+			<text class="block">你有一瓶毒药，你要毒死谁吗？</text>
+			<text class="block">女巫请闭眼。</text>
+			<text class="block">指挥预言家：预言家请睁眼。</text>
+			<text class="block">预言家，今天晚上你要验谁的身份？（预言家指人）</text>
+			<text class="block">如果这个是好人，这个是坏人，那他是这个。（大拇指朝上为好人，朝下为坏人。）</text>
+			<text class="block">预言家请闭眼。</text>
+			<text class="block">指挥守卫：守卫请睁眼。</text>
+			<text class="block">守卫今天晚上你要守谁？</text>
+			<text class="block">守卫请闭眼。</text>
+			<text class="block">一轮结束死人的话：天亮了，昨天晚上他死了，（可能情况，他也死了）。</text>
+			<text class="block">一轮结束没人死的话：天亮了，昨天晚上是个风平浪静的夜晚。</text>
+		</view>
+		<view class="avalon" hidden="{{!isShowAvalon}}">
+			<text class="big-block"># 最基本的台词</text>
+			<text class="block">梅林睁眼，除莫德雷德之外的坏人举手。</text>
+			<text class="block">坏人睁眼，除奥伯伦之外的坏人睁眼，互相确认身份。</text>
+			<text class="block">派希维尔睁眼，莫甘娜和梅林举手。</text>
+			<text class="big-block"># 任务成功条件</text>
+			<text class="block">5名玩家: 2-3-2-3-3 (均为出现一个任务失败就判定为任务失败)</text>
+			<text class="block">6名玩家: 2-3-4-3-4 (均为出现一个任务失败就判定为任务失败)</text>
+			<text class="block">7名玩家: 2-3-3-4-4 (第一个4人任务需要出现两个任务失败才判定为失败，其余只需要一个)</text>
+			<text class="block">	8-10名玩家: 3-4-4-5-5 (第一个5人任务需要出现两个任务失败才判定为失败，其余只需要一个)</text>
+		</view>
+	</view>
+</l-arc-popup>
+

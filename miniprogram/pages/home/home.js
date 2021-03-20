@@ -87,13 +87,6 @@ create.Page(store, {
     const roomType = gameType === '1' ? 'werewolf' : 'avalon'
     wx.navigateTo({
       url: `../${roomType}/${roomType}?gameType=${gameType}&isJoinGame=${isJoinGame}&isCreateRoom=${isCreateRoom}`,
-      success: result => {
-        console.log('建立房间成功')
-      },
-      fail: () => {
-        console.log('建立房间失败')
-      },
-      complete: () => {},
     })
   },
 

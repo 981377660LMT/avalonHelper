@@ -5,7 +5,6 @@
     "l-collapse-item": "../../miniprogram_npm//lin-ui//collapse-item",
     "l-icon": "../../miniprogram_npm//lin-ui/icon",
     "l-button": "../../miniprogram_npm/lin-ui/button",
-    "l-transition": "../../miniprogram_npm/lin-ui/transition",
     "WereWolfHeadItem": "../../components/WereWolfHeadItem/WereWolfHeadItem",
     "WereWolfBodyItem": "../../components/WerewolfBodyItem/WereWolfBodyItem",
     "WerewolfFooterItem": "../../components/WerewolfFooterItem/WerewolfFooterItem",

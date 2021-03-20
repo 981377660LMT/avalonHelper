@@ -56,3 +56,33 @@
   font-size: 70rpx;
   margin-right: 30rpx;
 }
+
+.popup-title-icon {
+  margin-right: 6rpx;
+  vertical-align: middle;
+}
+
+.popup-title {
+  font-size: 40rpx;
+  margin-bottom: 20rpx;
+  padding: 0;
+}
+
+.popup-body {
+  margin-top: 10rpx;
+}
+.big-block {
+  line-height: 1.6em;
+  font-size: 40rpx;
+  font-weight: 600;
+}
+
+.block {
+  display: block;
+  line-height: 1.6em;
+}
+
+.divider {
+  border-top: 1px dashed black;
+  margin: 14rpx 6rpx;
+}

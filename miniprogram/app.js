@@ -7,7 +7,7 @@ App({
       console.error('请使用 2.2.3 或以上的基础库以使用云能力')
     } else {
       wx.cloud.init({
-        env: 'reijin-env-2g0um6kp5951c4b2',
+        env: 'reijin-prod-7gl4y54h16a57fcc',
         traceUser: true,
       })
     }

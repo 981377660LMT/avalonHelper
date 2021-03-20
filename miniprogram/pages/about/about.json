@@ -1,6 +1,9 @@
 {
   "usingComponents": {
-    "l-button": "../../miniprogram_npm/lin-ui/button"
+    "l-button": "../../miniprogram_npm/lin-ui/button",
+    "l-arc-popup": "../../miniprogram_npm/lin-ui/arc-popup",
+    "l-segment": "../../miniprogram_npm/lin-ui/segment",
+    "l-segment-item": "../../miniprogram_npm/lin-ui/segment-item"
   },
 
   "navigationBarBackgroundColor": "#f4f5f5",

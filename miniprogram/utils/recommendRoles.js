@@ -2091,8 +2091,7 @@ export default function ({ gameType, memberNum }) {
               iconType: 'icon-huangguan',
               itemName: '莫甘娜',
               isSelected: 1,
-              roleInfo:
-                '女巫：女巫拥有两瓶药，解药可以救活一名当晚被狼人杀害的玩家，毒药可以毒杀一名玩家，女巫在每天晚上最多使用一瓶药。',
+              roleInfo: '莫甘娜：坏人阵营的领导者。',
             },
             {
               id: 5,
@@ -2148,8 +2147,7 @@ export default function ({ gameType, memberNum }) {
               iconType: 'icon-huangguan',
               itemName: '莫甘娜',
               isSelected: 1,
-              roleInfo:
-                '女巫：女巫拥有两瓶药，解药可以救活一名当晚被狼人杀害的玩家，毒药可以毒杀一名玩家，女巫在每天晚上最多使用一瓶药。',
+              roleInfo: '莫甘娜：坏人阵营的领导者。',
             },
             {
               id: 5,
@@ -2205,8 +2203,7 @@ export default function ({ gameType, memberNum }) {
               iconType: 'icon-huangguan',
               itemName: '莫甘娜',
               isSelected: 1,
-              roleInfo:
-                '女巫：女巫拥有两瓶药，解药可以救活一名当晚被狼人杀害的玩家，毒药可以毒杀一名玩家，女巫在每天晚上最多使用一瓶药。',
+              roleInfo: '莫甘娜：坏人阵营的领导者。',
             },
             {
               id: 5,
@@ -2262,8 +2259,7 @@ export default function ({ gameType, memberNum }) {
               iconType: 'icon-huangguan',
               itemName: '莫甘娜',
               isSelected: 1,
-              roleInfo:
-                '女巫：女巫拥有两瓶药，解药可以救活一名当晚被狼人杀害的玩家，毒药可以毒杀一名玩家，女巫在每天晚上最多使用一瓶药。',
+              roleInfo: '莫甘娜：坏人阵营的领导者。',
             },
             {
               id: 5,
@@ -2319,8 +2315,7 @@ export default function ({ gameType, memberNum }) {
               iconType: 'icon-huangguan',
               itemName: '莫甘娜',
               isSelected: 1,
-              roleInfo:
-                '女巫：女巫拥有两瓶药，解药可以救活一名当晚被狼人杀害的玩家，毒药可以毒杀一名玩家，女巫在每天晚上最多使用一瓶药。',
+              roleInfo: '莫甘娜：坏人阵营的领导者。',
             },
             {
               id: 5,
@@ -2376,8 +2371,7 @@ export default function ({ gameType, memberNum }) {
               iconType: 'icon-huangguan',
               itemName: '莫甘娜',
               isSelected: 1,
-              roleInfo:
-                '女巫：女巫拥有两瓶药，解药可以救活一名当晚被狼人杀害的玩家，毒药可以毒杀一名玩家，女巫在每天晚上最多使用一瓶药。',
+              roleInfo: '莫甘娜：坏人阵营的领导者。',
             },
             {
               id: 5,

@@ -18,6 +18,7 @@
 		 bg-color="#f4f5f5"
 		 shape="semicircle"
 		 l-class="enter-button"
+		 open-type="contact"
 		>
 			<i class="iconfont icon-guanyu1"></i>
 			建议反馈
@@ -28,6 +29,7 @@
 		 bg-color="#f4f5f5"
 		 shape="semicircle"
 		 l-class="enter-button"
+		 bind:lintap="onTapDialog"
 		>
 			<i class="iconfont icon-duihua"></i>
 			法官台词
@@ -38,6 +40,7 @@
 		 bg-color="#f4f5f5"
 		 shape="semicircle"
 		 l-class="enter-button"
+		 bind:lintap="onTapStrategy"
 		>
 			<i class="iconfont icon-gonglve"></i>
 			游戏攻略
@@ -46,4 +49,115 @@
 	</view>
 
 </view>
+
+<!-- 无标题提示框 -->
+
+<l-arc-popup
+ show="{{isShowDialog}}"
+ direction="top"
+ opacity="0.1"
+ arc-radius="30"
+ max-height="800"
+>
+	<view class="popup-title">
+		<text class="iconfont icon-icon-test popup-title-icon"></text>
+		法官台词
+	</view>
+	<l-segment placement="bottom" bind:linchange="changeFirstTabs">
+		<l-segment-item tab="狼人杀" key="1" />
+		<l-segment-item tab="阿瓦隆" key="2" />
+	</l-segment>
+	<view class="popup-body">
+		<view class="werewolf" hidden="{{!isShowWereWolf_1}}">
+			<text class="big-block"># 最基本的台词</text>
+
+			<text class="block">天黑请闭眼。</text>
+			<text class="block">指挥狼人：狼人请睁眼。（第一次要加上去：狼人请相互确认身份）</text>
+			<text class="block">狼人请指定被害者。（狼人请统一意见）</text>
+			<text class="block">狼人请闭眼。</text>
+			<text class="block">天黑请闭眼。</text>
+			<text class="block">指挥女巫：女巫请睁眼。</text>
+			<text class="block">女巫，你有一瓶毒药与一瓶解药，今天晚上他(她)死了，你要救他吗？</text>
+			<text class="block">你有一瓶毒药，你要毒死谁吗？</text>
+			<text class="block">女巫请闭眼。</text>
+			<text class="block">指挥预言家：预言家请睁眼。</text>
+			<text class="block">预言家，今天晚上你要验谁的身份？（预言家指人）</text>
+			<text class="block">如果这个是好人，这个是坏人，那他是这个。（大拇指朝上为好人，朝下为坏人。）</text>
+			<text class="block">预言家请闭眼。</text>
+			<text class="block">指挥守卫：守卫请睁眼。</text>
+			<text class="block">守卫今天晚上你要守谁？</text>
+			<text class="block">守卫请闭眼。</text>
+			<text class="block">一轮结束死人的话：天亮了，昨天晚上他死了，（可能情况，他也死了）。</text>
+			<text class="block">一轮结束没人死的话：天亮了，昨天晚上是个风平浪静的夜晚。</text>
+		</view>
+		<view class="avalon" hidden="{{!isShowAvalon_1}}">
+			<text class="big-block"># 最基本的台词</text>
+			<text class="block">梅林睁眼，除莫德雷德之外的坏人举手。</text>
+			<text class="block">坏人睁眼，除奥伯伦之外的坏人睁眼，互相确认身份。</text>
+			<text class="block">派希维尔睁眼，莫甘娜和梅林举手。</text>
+			<text class="big-block"># 任务成功条件</text>
+			<text class="block">5名玩家: 2-3-2-3-3 (均为出现一个任务失败就判定为任务失败)</text>
+			<text class="block">6名玩家: 2-3-4-3-4 (均为出现一个任务失败就判定为任务失败)</text>
+			<text class="block">7名玩家: 2-3-3-4-4 (第一个4人任务需要出现两个任务失败才判定为失败，其余只需要一个)</text>
+			<text class="block">	8-10名玩家: 3-4-4-5-5 (第一个5人任务需要出现两个任务失败才判定为失败，其余只需要一个)</text>
+		</view>
+	</view>
+</l-arc-popup>
+
+<l-arc-popup
+ show="{{isShowStrategy}}"
+ direction="top"
+ opacity="0.1"
+ arc-radius="30"
+ max-height="800"
+>
+	<view class="popup-title">
+		<text class="iconfont icon-gonglve1 popup-title-icon"></text>
+		游戏攻略
+	</view>
+	<l-segment placement="bottom" bind:linchange="changeSecondTabs">
+		<l-segment-item tab="狼人杀" key="1" />
+		<l-segment-item tab="阿瓦隆" key="2" />
+	</l-segment>
+	<view class="popup-body">
+		<view class="werewolf" hidden="{{!isShowWereWolf_2}}">
+			<text class="big-block"># 一些Tips</text>
+
+			<text class="block">预言家：一般来说预言家最好亮明身份。预言家亮明身份，那么场上就至少有两个人的身份确定了，而且有一个人是明确支持或者反对你的。另外亮明身份也会给场上其他的好人牌一个信号。还有比较关键得一点是预言家有两次活的机会，一次是女巫解药，一次是守卫守护。那么用这两次机会可以暴露出更多人的身份。不过有一个难点就是如何让人相信你是预言家，所以对于预言家的带队能力要求还是比较高的。</text>
+			<view class="divider"></view>
+			<text class="block">女巫：女巫有一瓶解药和一瓶毒药。解药一般来说在第一晚就会用到，在这里要关注的一点是第一晚究竟是好人被杀死还是狼人自刀。在屠边的游戏中，不建议神职暴露太多。所以女巫最好也要隐藏，毕竟女巫有毒人的能力。</text>
+			<view class="divider"></view>
+			<text class="block">守卫：每晚可以守护一名玩家，包括自己，但不能连续两晚守护同一名玩家。被守卫守护的玩家当晚不会被狼人杀害。守卫也一样，只要强调自己是好人并且一定要表现出找狼人的态度，中庸的那种很有可能被乱投出去，因为你不说话，没有价值。反正屠边的话少你一个神职也不怕。</text>
+			<view class="divider"></view>
+			<text class="block">猎人：当且仅当猎人被狼人杀害或被投票放逐时，猎人可以亮出自己的身份牌并指定枪杀一名玩家，被女巫毒杀则无法发动技能。猎人的带走技能还是很厉害的，所以猎人一定要分析好狼人的身份，如果迷迷糊糊的反而带走一个好人，那还不如不带呢。</text>
+			<view class="divider"></view>
+			<text class="block">白痴：白痴被投票出局，可以翻开自己的身份牌，免疫此次放逐，之后可以正常发言，但不能投票，狼人仍需要击杀他才能让他死亡。但若是白痴因非投票原因死亡，则无法发动技能，立即死亡。白痴被投出局后，可以重点发言，把心中怀疑的狼人都给指出来，如果被他们几个投死后，那么很有可能就是狼人。不过有一种是暗投，一种是明投，不知道这个怎么来判断区分。</text>
+			<view class="divider"></view>
+			<text class="block">狼人：一是把自己当成一个好人，然后一直在看似公正的分析其他人。心里的潜台词是只有自己是好人，其他都值得怀疑。
+二是悍跳，跳预言家这样的话就会把自己放在一个显著的位置。如果玩得好那么可以把其他人的思路都带跑偏，如果玩的不好，那么很可能被一下子投出去。</text>
+
+		</view>
+		<view class="avalon" hidden="{{!isShowAvalon_2}}">
+			<text class="big-block"># 一些Tips</text>
+			<text class="block">长得最像梅林的人：
+				1.别人提出的方案里存在坏人，一定会投反对。
+2.别人提出的方案里没有坏人，一定会投同意。
+3.自己提出的方案里绝对没有坏人。</text>
+			<view class="divider"></view>
+			<text class="block">梅林：不轻易地提出观点；故意犯错；试着通过推理或评论的形式主动传达信息。</text>
+			<view class="divider"></view>
+			<text class="block">普通忠臣：故作神秘；默认投票是反对；在合适的时机投同意；在发言过程中主动提出观点。</text>
+			<view class="divider"></view>
+			<text class="block">派西维尔：保护梅林，引导舆论。</text>
+			<view class="divider"></view>
+			<text class="block">莫甘娜：忘记自己是个坏人，把自己当成好人；看准时机卖队友。</text>
+			<view class="divider"></view>
+			<text class="block">莫德雷德：低调行事。</text>
+			<view class="divider"></view>
+			<text class="block">刺客 / 爪牙：乱投票搅局。</text>
+			<view class="divider"></view>
+			<text class="block">奥伯伦：尽早暴露，投出坏票。</text>
+		</view>
+	</view>
+</l-arc-popup>
 

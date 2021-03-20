@@ -3,45 +3,53 @@ Page({
   /**
    * 页面的初始数据
    */
-  data: {},
+  data: {
+    isShowDialog: false,
+    isShowStrategy: false,
+    isShowWereWolf_1: true,
+    isShowAvalon_1: false,
+    isShowWereWolf_2: true,
+    isShowAvalon_2: false,
+  },
+  onTapDialog() {
+    this.setData({
+      isShowDialog: true,
+    })
+  },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {},
+  onTapStrategy() {
+    this.setData({
+      isShowStrategy: true,
+    })
+  },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {},
+  changeFirstTabs(e) {
+    const currentTab = e.detail.activeKey
+    if (currentTab === '1') {
+      this.setData({
+        isShowWereWolf_1: true,
+        isShowAvalon_1: false,
+      })
+    } else {
+      this.setData({
+        isShowWereWolf_1: false,
+        isShowAvalon_1: true,
+      })
+    }
+  },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {},
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {},
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {},
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {},
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {},
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {},
+  changeSecondTabs(e) {
+    const currentTab = e.detail.activeKey
+    if (currentTab === '1') {
+      this.setData({
+        isShowWereWolf_2: true,
+        isShowAvalon_2: false,
+      })
+    } else {
+      this.setData({
+        isShowWereWolf_2: false,
+        isShowAvalon_2: true,
+      })
+    }
+  },
 })
