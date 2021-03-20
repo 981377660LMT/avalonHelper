@@ -1,5 +1,11 @@
 import create from '../../utils/create'
 import store from '../../store/index'
+import recommendRoles from '../../utils/recommendRoles'
+
+// '1'代表狼人杀，'2'代表阿瓦隆
+let gameType = '2'
+let isJoinGame = '1'
+const db = wx.cloud.database()
 
 create.Page(store, {
   /**
@@ -8,6 +14,7 @@ create.Page(store, {
   data: {
     roomNumber: -1,
     memberNum: 9,
+    normalWolfNum: 0,
     specialCharacter: [
       {
         id: 2,
@@ -61,73 +68,186 @@ create.Page(store, {
       },
     ],
     // 是否处于选择配置阶段
-    isSelectRole: false,
-  },
-  // 改变count数量时
-  onCountChange(e) {
-    console.log(e)
-  },
-  // 改变特殊角色时
-  onSelectChange(e) {
-    console.log(e)
-  },
-  // 点击固定悬浮时
-  onClickHelp() {
-    console.log(1)
-    wx.lin.showActionSheet({
-      itemList: [
-        {
-          name: '今日不再出现此类内容',
-        },
-        {
-          name: '屏蔽',
-        },
-      ],
-    })
+    isShowRolesModal: false,
+    isCreateRoom: '0',
+    myRoleName: '',
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    const { gameType, isJoinGame, isCreateRoom } = options
-    console.log(options)
-    // 如果options里有isCreateRoom，则不请求当前的房间号
-    // 请求数据库，返回数据显示角色弹窗,返回房间号等
+    const { gameType: a, isJoinGame: b, isCreateRoom: c } = options
+
+    gameType = a
+    isJoinGame = b
+    if (c) {
+      this.setData({
+        isCreateRoom: c,
+      })
+    }
+
+    console.log(gameType, isJoinGame)
+    if (this.data.isCreateRoom !== '1') {
+      const { itemName: myRoleName } = this.store.data.roomInfo.myRole
+      const { roomNumber, memberNum, normalWolfNum, specialCharacter } = this.store.data.roomInfo.targetRoom
+      this.setData({
+        roomNumber,
+        memberNum,
+        normalWolfNum,
+        specialCharacter,
+        myRoleName,
+      })
+    }
+  },
+
+  // 改变count数量时
+  onCountChange(e) {
+    const { itemId, count } = e.detail
+    const itemType = itemId === '1' ? 'memberNum' : 'normalWolfNum'
+
+    this.setData({
+      [itemType]: count,
+    })
+  },
+  // 改变特殊角色时
+  onSelectChange(e) {
+    let { itemId, checked } = e.detail
+    checked = checked === true ? 1 : 0
+    itemId = parseInt(itemId)
+
+    this.changeSpecialCharacter(itemId, checked)
+    console.log(this.data)
   },
 
   /**
-   * 生命周期函数--监听页面初次渲染完成
+   * 改变角色数据
+   * @param {String} roleId
+   * @param {Number} isSelected
    */
-  onReady: function () {},
+  changeSpecialCharacter(roleId, isSelected) {
+    const rawArr = this.data.specialCharacter
+    const resultArr = rawArr.map(character => {
+      if (character.id === roleId) {
+        character.isSelected = isSelected
+      }
+      return character
+    })
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {},
+    this.setData({
+      specialCharacter: resultArr,
+    })
+  },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {},
+  // 使用推荐配置时:注意每种人数推荐配置应该有多种,
+  onUseRecommendation() {
+    const { specialCharacter } = recommendRoles({ gameType, memberNum: this.data.memberNum })
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {},
+    this.setData({
+      specialCharacter,
+    })
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {},
+    console.log(this.data)
 
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {},
+    wx.showToast({
+      title: '已使用推荐配置',
+      icon: 'success',
+      duration: 1000,
+    })
+  },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {},
+  // 点击开始时
+  onStartGame() {
+    // 需要验证
+    if (this.validateRoles()) {
+      this.showRolesModal()
+    }
+  },
+
+  showRolesModal() {
+    this.setData({
+      isShowRolesModal: true,
+    })
+  },
+
+  onRolesModalConfirm() {
+    console.log('房间开始创建')
+
+    wx.showLoading({
+      title: '正在创建房间',
+      mask: true,
+    })
+    // 然后提交服务器，不带isCreateRoom重新加载页面
+    wx.cloud
+      .callFunction({
+        name: 'createRoom',
+        data: {
+          gameType,
+          isJoinGame,
+          memberNum: this.data.memberNum,
+          normalWolfNum: this.data.normalWolfNum,
+          specialCharacter: this.data.specialCharacter,
+          avatarUrl: this.store.data.userInfo.avatarUrl,
+          nickName: this.store.data.userInfo.nickName,
+        },
+      })
+      .then(res => {
+        const { isJoinGame, myRole, roomNumber, memberNum } = res.result
+
+        // 创建者加入游戏
+        if (isJoinGame === '1') {
+          this.setData({
+            roomNumber,
+            isCreateRoom: '0',
+            myRoleName: myRole.itemName,
+          })
+        } else {
+          // 创建者不加入游戏
+          wx.redirectTo({
+            url: `../board/board?isAfterCreateRoom=1&roomNumber=${roomNumber}&shouldRoomMember=${memberNum}`,
+          })
+        }
+
+        wx.showToast({
+          title: '创建房间成功',
+          icon: 'success',
+          duration: 1500,
+          mask: false,
+        })
+      })
+      .catch(err => {
+        wx.showToast({
+          title: '创建房间失败',
+          icon: 'error',
+          duration: 1500,
+          mask: false,
+        })
+      })
+  },
+
+  // 验证选择的角色
+  validateRoles() {
+    const specialCharacterNum = this.data.specialCharacter.reduce((pre, cur) => {
+      return cur.isSelected === 1 ? pre + 1 : pre
+    }, 0)
+    const isRolesNumReasonable = specialCharacterNum + this.data.normalWolfNum <= this.data.memberNum
+    // console.log(specialCharacterNum, isRolesNumReasonable)
+
+    if (!isRolesNumReasonable) {
+      wx.showToast({
+        title: '人数超出范围',
+        icon: 'error',
+        duration: 2000,
+      })
+      return false
+    }
+
+    return true
+  },
+
+  showRolesModal() {
+    this.setData({
+      isShowRolesModal: true,
+    })
+  },
 })

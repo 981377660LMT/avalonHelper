@@ -107,58 +107,99 @@ create.Page(store, {
   // 输入房间号并确定后
   onModalInputConfirm(e) {
     // 注意获得的房间号是一个字符串
-    const input = parseInt(e.detail.input) || -1
-    console.log(input)
+    const inputRoomNumber = parseInt(e.detail.input) || -1
     // 调用云函数发送请求，查询房间;存在且非满员时，存入当前玩家的信息
+    wx.showLoading({
+      title: '正在查询房间',
+      mask: true,
+    })
+    console.log('输入的是', inputRoomNumber)
+    wx.cloud
+      .callFunction({
+        name: 'getRoomInfoByRoomNum',
+        data: {
+          inputRoomNumber,
+          avatarUrl: this.store.data.userInfo.avatarUrl,
+          nickName: this.store.data.userInfo.nickName,
+        },
+      })
+      .then(res => {
+        // 云函数返回：有房间号以及当前玩家的角色，则根据游戏种类跳转至房间；加载房间前需要请求云函数获取房间状态；对应界面显示弹窗
 
-    // 云函数返回
+        const { roomStatus, targetRoom, openId } = res.result
+        console.log(res.result)
 
-    // 云函数返回：有房间号以及当前玩家的角色，则根据游戏种类跳转至房间；加载房间前需要请求云函数获取房间状态；对应界面显示弹窗
+        switch (roomStatus) {
+          //正常返回，路由跳转
+          case 200:
+            this.store.data.roomInfo = res.result
+            const roomType = targetRoom.gameType === '1' ? 'werewolf' : 'avalon'
+            wx.hideLoading()
+            if (targetRoom.isJoinGame === '0' && openId === targetRoom.creatorOpenId) {
+              wx.navigateTo({
+                url: '../board/board',
+                success: () => {
+                  wx.showToast({
+                    title: '加入房间成功',
+                    icon: 'success',
+                    duration: 1500,
+                    mask: false,
+                  })
+                },
+              })
+            } else {
+              wx.navigateTo({
+                url: `../${roomType}/${roomType}`,
+                success: () => {
+                  wx.showToast({
+                    title: '加入房间成功',
+                    icon: 'success',
+                    duration: 1500,
+                    mask: false,
+                  })
+                },
+              })
+            }
 
-    // 云函数返回：不存在房间
+            break
 
-    // 云函数返回：当前房间已经满员(正在进行游戏)，需要判断此房间是否包含当前用户；包含则进入。
+          // 房间不存在
+          case 404:
+            wx.showToast({
+              title: '房间不存在',
+              icon: 'error',
+              duration: 1500,
+              mask: false,
+            })
+            break
+
+          // 加入了别人的满员房间
+          case 403:
+            wx.showToast({
+              title: '房间已满员',
+              icon: 'error',
+              duration: 1500,
+              mask: false,
+            })
+            break
+
+          default:
+            wx.showToast({
+              title: '加入房间失败',
+              icon: 'error',
+              duration: 1500,
+              mask: false,
+            })
+            break
+        }
+      })
+      .catch(error => {
+        wx.showToast({
+          title: '加入房间失败',
+          icon: 'error',
+          duration: 1500,
+          mask: false,
+        })
+      })
   },
-
-  //////////////////////  //////////////////////
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {},
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {},
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {},
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {},
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {},
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {},
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {},
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {},
 })

@@ -11,10 +11,11 @@
 			 itemId="1"
 			 itemName="总人数"
 			 itemQuantifier="人"
-			 bind:onCountChange="onCountChange"
+			 bind:onTapCount="onCountChange"
 			 count="{{memberNum}}"
-			 min="5"
-			 max="10"
+			 min="{{5}}"
+			 max="{{10}}"
+			 isCreateRoom="{{isCreateRoom==='1'}}"
 			/>
 
 			<view class="divider"></view>
@@ -30,6 +31,7 @@
 						 itemName="{{item.itemName}}"
 						 isSelected="{{item.isSelected}}"
 						 bind:onSelectChange="onSelectChange"
+						 isCreateRoom="{{isCreateRoom==='1'}}"
 						/>
 					</view>
 					<text>{{item.roleInfo===''?'这是一个自定义添加的人物。':item.roleInfo}}</text>
@@ -37,11 +39,11 @@
 			</l-collapse>
 
 			<!-- 卡片底部 -->
-			<WerewolfFooterItem wx:if="{{isSelectRole}}" role="预言家" />
+			<WerewolfFooterItem wx:if="{{isCreateRoom!=='1'}}" role="{{myRoleName}}" />
 			<view class="footer-start" wx:else>
 				<view class="divider"></view>
 				<view class="edit">
-					<view>
+					<view bind:tap="onUseRecommendation">
 						<i class="iconfont icon-tuijian"></i>
 						使用推荐配置
 					</view>
@@ -53,6 +55,7 @@
 					 shape="circle"
 					 l-label-class="start-button"
 					 l-class="start-button"
+					 bind:lintap="onStartGame"
 					>
 						<i class="iconfont icon-kaishi"></i>
 						开始游戏
@@ -64,4 +67,12 @@
 	</view>
 
 </view>
+
+<RolesModal
+ memberNum="{{memberNum}}"
+ roles="{{specialCharacter}}"
+ isShowRolesModal="{{isShowRolesModal}}"
+ gameType="2"
+ bind:onRolesModalConfirm="onRolesModalConfirm"
+></RolesModal>
 

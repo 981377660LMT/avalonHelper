@@ -13,4 +13,4 @@ const a = Array(9999)
   .map((value, index) => ({ [index + 1]: 1 }))
   .slice(-1)
 
-console.log(a)
+console.log(Date.now())

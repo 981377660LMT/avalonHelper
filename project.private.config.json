@@ -27,7 +27,7 @@
         {
           "name": "pages/avalon/avalon",
           "pathName": "pages/avalon/avalon",
-          "query": "",
+          "query": "isCreateRoom=1&gameType=2",
           "scene": null
         },
         {

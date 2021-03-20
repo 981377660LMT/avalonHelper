@@ -11,6 +11,7 @@
 		 l-disabled-class="l-disabled-class"
 		 l-symbol-class="l-symbol-class"
 		 l-count-class="l-count-class"
+		 disabled="{{!isCreateRoom}}"
 		/>
 	</view>
 	<text class="item-quantifier">{{itemQuantifier}}</text>

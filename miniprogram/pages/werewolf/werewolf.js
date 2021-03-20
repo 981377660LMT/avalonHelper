@@ -87,37 +87,38 @@ create.Page(store, {
     isShowModalInput: false,
     isShowRolesModal: false,
     isCreateRoom: '0',
-    myRole: '???',
+    myRoleName: '',
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(store)
-    const { gameType: a, isJoinGame: b, isCreateRoom: c, myRole: d } = options
+    const { gameType: a, isJoinGame: b, isCreateRoom: c } = options
+
     gameType = a
     isJoinGame = b
-    this.setData({
-      isCreateRoom: c,
-      myRole: d,
-    })
+    if (c) {
+      this.setData({
+        isCreateRoom: c,
+      })
+    }
+
     console.log(gameType, isJoinGame)
     if (this.data.isCreateRoom !== '1') {
-      console.log('不是创建房间进来的')
+      const { itemName: myRoleName } = this.store.data.roomInfo.myRole
+      const { roomNumber, memberNum, normalWolfNum, specialCharacter } = this.store.data.roomInfo.targetRoom
+      this.setData({
+        roomNumber,
+        memberNum,
+        normalWolfNum,
+        specialCharacter,
+        myRoleName,
+      })
       // 不是创建房间进来的
       // 请求数据库，返回数据显示角色弹窗,返回房间号等
     }
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {},
-
-  onUnload: function () {},
-
-  onShareAppMessage: function () {},
 
   // 改变count数量时
   onCountChange(e) {
@@ -156,8 +157,6 @@ create.Page(store, {
     this.setData({
       specialCharacter: resultArr,
     })
-
-    console.log(this.data.specialCharacter)
   },
 
   // 添加自定义角色时
@@ -249,13 +248,28 @@ create.Page(store, {
         },
       })
       .then(res => {
+        const { isJoinGame, myRole, roomNumber, memberNum } = res.result
+
+        // 创建者加入游戏
+        if (isJoinGame === '1') {
+          this.setData({
+            roomNumber,
+            isCreateRoom: '0',
+            myRoleName: myRole.itemName,
+          })
+        } else {
+          // 创建者不加入游戏
+          wx.redirectTo({
+            url: `../board/board?isAfterCreateRoom=1&roomNumber=${roomNumber}&shouldRoomMember=${memberNum}`,
+          })
+        }
+
         wx.showToast({
           title: '创建房间成功',
           icon: 'success',
           duration: 1500,
           mask: false,
         })
-        console.log(res)
       })
       .catch(err => {
         wx.showToast({
@@ -290,21 +304,6 @@ create.Page(store, {
   showRolesModal() {
     this.setData({
       isShowRolesModal: true,
-    })
-  },
-
-  // 点击固定悬浮前往角色页面时
-  onClickHelp() {
-    console.log(1)
-    wx.lin.showActionSheet({
-      itemList: [
-        {
-          name: '今日不再出现此类内容',
-        },
-        {
-          name: '屏蔽',
-        },
-      ],
     })
   },
 })

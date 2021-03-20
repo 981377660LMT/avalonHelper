@@ -15,6 +15,7 @@
 			 count="{{memberNum}}"
 			 min="{{6}}"
 			 max="{{18}}"
+			 isCreateRoom="{{isCreateRoom==='1'}}"
 			/>
 			<WereWolfHeadItem
 			 itemId="2"
@@ -24,6 +25,7 @@
 			 count="{{normalWolfNum}}"
 			 min="{{0}}"
 			 max="{{6}}"
+			 isCreateRoom="{{isCreateRoom==='1'}}"
 			/>
 			<view class="divider"></view>
 
@@ -38,6 +40,7 @@
 						 itemName="{{item.itemName}}"
 						 isSelected="{{item.isSelected}}"
 						 bind:onSelectChange="onSelectChange"
+						 isCreateRoom="{{isCreateRoom==='1'}}"
 						/>
 					</view>
 					<text>{{item.roleInfo===''?'这是一个自定义添加的人物。':item.roleInfo}}</text>
@@ -45,7 +48,7 @@
 			</l-collapse>
 
 			<!-- 卡片底部 -->
-			<WerewolfFooterItem wx:if="{{isCreateRoom!=='1'}}" role="{{myRole}}" />
+			<WerewolfFooterItem wx:if="{{isCreateRoom!=='1'}}" role="{{myRoleName}}" />
 			<view wx:else class="footer-start">
 				<view class="divider"></view>
 				<view class="edit">

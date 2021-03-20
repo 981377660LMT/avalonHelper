@@ -10,6 +10,7 @@ Component({
     count: Number,
     min: Number,
     max: Number,
+    isCreateRoom: Boolean,
   },
   options: {
     styleIsolation: 'apply-shared',

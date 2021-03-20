@@ -5,7 +5,12 @@
 	<text class="item-name">{{itemName}}</text>
 	<view class="radio">
 		<l-radio-group bind:linchange="linchange" current="{{isSelected}}" data-itemid="{{itemId}}">
-			<l-radio key="1" placement="right" select-color="gray"></l-radio>
+			<l-radio
+			 key="1"
+			 placement="right"
+			 select-color="gray"
+			 disabled="{{!isCreateRoom}}"
+			></l-radio>
 		</l-radio-group>
 	</view>
 	<view class="down">

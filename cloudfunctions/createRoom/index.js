@@ -19,8 +19,8 @@ const allRoomNumberArr = Array(9999)
 // 云函数入口函数
 exports.main = async (event, context) => {
   try {
-    const { gameType, isJoinGame, memberNum, normalWolfNum, specialCharacter, avatarUrl, nickName, createTime } = event
-    const openid = cloud.getWXContext().OPENID
+    const { gameType, isJoinGame, memberNum, normalWolfNum, specialCharacter, avatarUrl, nickName } = event
+    const openId = cloud.getWXContext().OPENID
 
     const normalCharacter = {
       1: {
@@ -71,7 +71,7 @@ exports.main = async (event, context) => {
     //判断创建者是否参加游戏，参加先处理创建者的角色，再处理存入数据库的数据
     if (isJoinGame === '1') {
       myRole = leftRoomRolesNow.pop()
-      selectedRoomRolesNow.push({ ...myRole, avatarUrl, nickName })
+      selectedRoomRolesNow.push({ ...myRole, avatarUrl, nickName, openId })
     }
 
     // 查询并生成1-9999的房间号
@@ -95,12 +95,10 @@ exports.main = async (event, context) => {
         specialCharacter,
         leftRoomRolesNow,
         selectedRoomRolesNow,
-        creatorOpenId: openid,
-        createTime: db.serverDate(),
+        creatorOpenId: openId,
+        createTime: Date.now(),
       },
     })
-
-    //设置定时器，2小时后deleteRoom()
 
     // 返回创建玩家的信息，角色，房间号
     return {

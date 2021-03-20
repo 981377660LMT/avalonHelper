@@ -20,12 +20,12 @@
 				<view class="board-body-body">
 					<l-grid show-border="true" row-num="2" l-class="l-grid">
 						<l-grid-item
-						 key="{{item.id}}"
-						 slot="{{item.id}}"
+						 key="{{item.openId}}"
+						 slot="{{item.openId}}"
 						 wx:for="{{roomMemberNow}}"
-						 wx:key="id"
+						 wx:key="openId"
 						>
-							<UserItem userAvatarUrl="{{item.userAvatarUrl}}" userNickName="{{item.userNickName}}" userRole="{{item.userRole}}"></UserItem>
+							<UserItem userAvatarUrl="{{item.avatarUrl}}" userNickName="{{item.nickName}}" userRole="{{item.itemName}}"></UserItem>
 						</l-grid-item>
 					</l-grid>
 				</view>

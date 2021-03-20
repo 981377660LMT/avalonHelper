@@ -9,6 +9,7 @@ Component({
     itemName: String,
     // 1代表选中,0代表未选中
     isSelected: Number,
+    isCreateRoom: Boolean,
   },
 
   options: {
