@@ -3,7 +3,7 @@
     {
       "name": "deleteRoomTrigger",
       "type": "timer",
-      "config": "0 */50 * * * * *"
+      "config": "0 */30 * * * * *"
     }
   ]
 }
